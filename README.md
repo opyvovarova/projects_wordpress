@@ -2,8 +2,12 @@
 
 StartIt
 1. Контрольная работа на второй недели обучения
+
 Читаем
+
 https://wp-kama.ru/function/get_template_part
+
+
 https://wp-kama.ru/function/get_template_directory_uri
 
 Задание
