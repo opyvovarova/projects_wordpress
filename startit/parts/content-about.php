@@ -1,10 +1,16 @@
+
+
+<?php
+$about_company_title = get_field('about_company_title');
+$about_company_description = get_field('about_company_description');
+?>
 <section id="about" class="about">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-6 col-md-6">
                             <div class="section-title">
-                                <h2>About Company</h2>
-                                <p>Lorem ipsum dolor sit, consectet ipsum dolor sit</p>
+                                <h2><?= $about_company_title; ?></h2>
+                                <p><?= $about_company_description; ?></p>
                             </div>
                             <div class="about_content_box box-left">
                                 <div class="about_txt_box">

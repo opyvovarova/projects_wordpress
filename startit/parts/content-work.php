@@ -1,8 +1,13 @@
+<?php
+$our_portfolio_title = get_field('our_portfolio_title');
+$our_portfolio_description = get_field('our_portfolio_description');
+?>
+
 <section id="works" class="works">
                 <div class="container">
                     <div class="section-title">
-                        <h2>Our Portfolio</h2>
-                        <p>Lorem ipsum dolor sit, consectet ipsum dolor sit</p>
+                        <h2><?= $our_portfolio_title; ?></h2>
+                        <p><?= $our_portfolio_description; ?></p>
                     </div>
 
                     <ul id="filters" class="clearfix text-center">

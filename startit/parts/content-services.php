@@ -1,39 +1,34 @@
-<div class="main-wrapper">
 
+<div class="main-wrapper">
+<?php 
+$our_services_title = get_field('our_services_title');
+$our_services_description = get_field('our_services_description');
+$our_services_content = get_field('our_services_content');
+?>
 <section id="services" class="services pt-10">
     <div class="container">
         <div class="section-title">
-            <h2>Our Services</h2>
-            <p>Lorem ipsum dolor sit, consectet ipsum dolor sit</p>
+            <h2><?= $our_services_title; ?></h2>
+            <p><?= $our_services_description; ?></p>
         </div>
+         <?php if( get_field('our_services_content') ):?> 
         <div class="row">
+       
+        <?php
+        while( has_sub_field('our_services_content') ): ?>
             <div class="col-lg-4 col-md-6">
+            
                 <div class="servicebox">
                     <div class="srv_desc">
-                        <h5 class="count">01</h5>
-                        <h4><a href="index.html#">Web Designing</a></h4>
-                        <p>Ut enim ad minima veniam, quis nostr um exercitationem corporate loorem commosequatur? Quis autem vel</p>
+
+                        <h5 class="count"><?= the_sub_field('number'); ?></h5>
+                        <h4><a href="#"><?= the_sub_field('title'); ?> </a></h4> 
+                        <p><?= the_sub_field('text'); ?></p>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="servicebox">
-                    <div class="srv_desc">
-                        <h5 class="count">02</h5>
-                        <h4><a href="index.html#">Photography</a></h4>
-                        <p>Ut enim ad minima veniam, quis nostr um exercitationem corporate loorem commosequatur? Quis autem vel</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="servicebox">
-                    <div class="srv_desc">
-                        <h5 class="count">03</h5>
-                        <h4><a href="index.html#">Art Direction</a></h4>
-                        <p>Ut enim ad minima veniam, quis nostr um exercitationem corporate loorem commosequatur? Quis autem vel</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+<?php endwhile;?>
+
+<?php endif;?>
     </div>
 </section>

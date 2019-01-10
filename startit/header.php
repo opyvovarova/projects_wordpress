@@ -44,14 +44,13 @@
                         </div>
                         <div class="nav-inner">
                             <div id="mobile-toggle" class="mobile-btn"></div>
-                            <ul class="main-menu">
-                                <li class="menu-item"><a class="active" href="index.html#slider">Home</a></li>
-                                <li class="menu-item"><a href="index.html#services">Services</a></li>
-                                <li class="menu-item"><a href="index.html#about">About Us</a></li>
-                                <li class="menu-item"><a href="index.html#works">Portfolio</a></li>
-                                <li class="menu-item"><a href="index.html#blog">Blog</a></li>
-                                <li class="menu-item"><a href="index.html#contact">Contact</a></li>
-                            </ul>
+                            <?php 
+                            wp_nav_menu( [
+                                'menu' => 'Home Top Menu',
+                                'menu_class' => 'main-menu'
+                            ] );
+                            ?>
+                       
                         </div>
                     </nav>
                 </div>
