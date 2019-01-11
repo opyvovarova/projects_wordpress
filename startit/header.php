@@ -40,7 +40,6 @@
                     <nav id="flexmenu">
                         <div class="logo">
                             <?php the_custom_logo( );?>
-                            <!-- <a href="index.html"><img src="images/logo.png" alt="logo"></a> -->
                         </div>
                         <div class="nav-inner">
                             <div id="mobile-toggle" class="mobile-btn"></div>

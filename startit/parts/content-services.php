@@ -22,7 +22,7 @@ $our_services_content = get_field('our_services_content');
                     <div class="srv_desc">
 
                         <h5 class="count"><?= the_sub_field('number'); ?></h5>
-                        <h4><a href="#"><?= the_sub_field('title'); ?> </a></h4> 
+                        <h4><a href="<?= the_sub_field('services_link_title'); ?>"><?= the_sub_field('title'); ?> </a></h4> 
                         <p><?= the_sub_field('text'); ?></p>
                     </div>
                 </div>

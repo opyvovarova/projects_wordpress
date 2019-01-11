@@ -16,7 +16,12 @@ add_action('after_setup_theme', function(){
 });
 add_theme_support( 'post-thumbnails' );
 
-
+function add_image_sizes() {
+	add_image_size( 'articles', 365, 280, TRUE );
+	add_image_size( 'portfolio', 300, 300, TRUE );
+	add_image_size( 'slider', 1350, 900, TRUE );
+}
+add_action( 'init', 'add_image_sizes' );
 
 //Includes
 

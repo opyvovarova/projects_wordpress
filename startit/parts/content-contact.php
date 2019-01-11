@@ -1,22 +1,23 @@
 <section id="contact" class="contact">
                 <div class="container">
                     <div class="row">
+                    <?php if( get_field('information') ):?> 
+
+                   
                         <div class="col-md-4 col-lg-4">
                             <div class="contact-info">
+                            <?php
+                            while( has_sub_field('information') ): ?>
                                 <div class="contact-info-details">
-                                    <h4>Phone</h4>
-                                    <p>+ 123 - 456 -789,   + 987 - 654 - 321</p>
+                                    <h4><?= the_sub_field('title_information'); ?></h4>
+                                    <p><?= the_sub_field('information_description'); ?></p>
                                 </div>
-                                <div class="contact-info-details">
-                                    <h4>Address</h4>
-                                    <p>RK road, United states of America</p>
-                                </div>
-                                <div class="contact-info-details">
-                                    <h4>E-mail</h4>
-                                    <p>carrbyagency@gmail.com</p>
-                                </div>
+                            <?php endwhile;?>
+    
+                                
                             </div>
                         </div>
+                        <?php endif;?>
                         <div class="col-md-7 col-lg-7 offset-lg-1">
                             <div class="contact-form-two">
                                 <div class="contact-title">

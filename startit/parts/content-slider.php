@@ -9,19 +9,13 @@
 
 ?>
 
-<section id="slider" class="slider_1" style="background-image:url(<?php bloginfo('template_directory')?>/inc/images/slider/slider-bg1.jpg)"; >
+<section id="slider" class="slider_1" style="background-image:url(<?= get_field('slider_image'); ?>) ">
             <div class="slider">
                 <div class="container">
                     <div class="slide-content">
-                        <h6 class="sub_heading">Creative Agency Template</h6>
+                        <h6 class="sub_heading"><?= get_field('description_slider'); ?></h6>
                         <div class="typing_content">
-                            <h2 class="heading">
-                                We Are <span class="typed-element">Carrby</span>
-                            </h2>
-                            <div class="typed-strings">
-                                <p>Agency</p>
-                                <p>Company</p>
-                            </div>
+                            <?= get_field('title_slider');?>
                         </div>
                     </div>
                 </div>

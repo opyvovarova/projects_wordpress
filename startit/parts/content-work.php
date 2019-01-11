@@ -20,118 +20,82 @@ $our_portfolio_description = get_field('our_portfolio_description');
 
                     <div id="portfoliolist">
                         <div class="row">
+                        <?php if(get_field('web_portfolio')): ?>
+                        <?php  while(has_sub_field('web_portfolio')): ?>
+
                             <div class="col-md-4 col-lg-3 portfolio web">
+
                                 <div class="portfolio-wrapper"> 
                                     <div class="works-img">
-                                        <a href="<?php bloginfo('template_directory')?>/inc/images/portfolio/project-1.jpg)" data-fancybox="images">
-                                            <img src="<?php bloginfo('template_directory')?>/inc/images/portfolio/project-1.jpg)" alt="" />
+
+                                        <a href="<?php the_sub_field('web_image'); ?>" data-fancybox="images">
+                                            <img src="<?php the_sub_field('web_image'); ?>" alt="" />
                                         </a>
                                     </div>
                                     <div class="works-info">
                                         <div class="label-text">
-                                            <h4>New Packaging</h4>
+                                        <h4><?php the_sub_field('title_image');?></h4>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4 col-lg-3 portfolio art creative">
-                                <div class="portfolio-wrapper">
-                                    <div class="works-img">
-                                        <a href="<?php bloginfo('template_directory')?>/inc/images/portfolio/project-2.jpg)" data-fancybox="images">
-                                            <img src="<?php bloginfo('template_directory')?>/inc/images/portfolio/project-2.jpg)" alt="" />
-                                        </a>
-                                    </div>
-                                    <div class="works-info">
-                                        <div class="label-text">
-                                            <h4>Healty Drinks</h4>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-lg-3 portfolio creative wordpress">
+                            <?php endwhile;?>
+                            <?php endif;?>
+                            <?php if(get_field('art_portfolio')): ?>
+                            <?php  while(has_sub_field('art_portfolio')): ?>
+                            <div class="col-md-4 col-lg-3 portfolio art">
                                 <div class="portfolio-wrapper">
                                     <div class="works-img"> 
-                                        <a href="<?php bloginfo('template_directory')?>/inc/images/portfolio/project-3.jpg)" data-fancybox="images">
-                                            <img src="<?php bloginfo('template_directory')?>/inc/images/portfolio/project-3.jpg)" alt="" />
+                                        <a href="<?php the_sub_field('art_image'); ?>" data-fancybox="images">
+                                            <img src="<?php the_sub_field('art_image'); ?>" alt="" />
                                         </a>
                                     </div>
                                     <div class="works-info">
                                         <div class="label-text">
-                                            <h4>Smart Bottle</h4>
+                                            <h4><?php the_sub_field('art_title');?></h4>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4 col-lg-3 portfolio web creative">
-                                <div class="portfolio-wrapper"> 
-                                    <div class="works-img">
-                                        <a href="<?php bloginfo('template_directory')?>/inc/images/portfolio/project-4.jpg)" data-fancybox="images">
-                                            <img src="<?php bloginfo('template_directory')?>/inc/images/portfolio/project-4.jpg)" alt="" />
-                                        </a>
-                                    </div>
-                                    <div class="works-info">
-                                        <div class="label-text">
-                                            <h4>Stored Album</h4>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-lg-3 portfolio web art">
+                            <?php endwhile;?>
+                            <?php endif;?>
+                            <?php if(get_field('creative_portfolio')): ?>
+                            <?php  while(has_sub_field('creative_portfolio')): ?>
+                            <div class="col-md-4 col-lg-3 portfolio creative ">
                                 <div class="portfolio-wrapper">
                                     <div class="works-img"> 
-                                        <a href="<?php bloginfo('template_directory')?>/inc/images/portfolio/project-5.jpg)" data-fancybox="images">
-                                            <img src="<?php bloginfo('template_directory')?>/inc/images/portfolio/project-5.jpg)" alt="" />
+                                        <a href="<?php the_sub_field('creative_image'); ?>" data-fancybox="images">
+                                            <img src="<?php the_sub_field('creative_image'); ?>" alt="" />
                                         </a>
                                     </div>
                                     <div class="works-info">
                                         <div class="label-text">
-                                            <h4>Shopping Bag</h4>
+                                        <h4><?php the_sub_field('creative_title');?></h4>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4 col-lg-3 portfolio art wordpress">
-                                <div class="portfolio-wrapper">
-                                    <div class="works-img"> 
-                                        <a href="<?php bloginfo('template_directory')?>/inc/images/portfolio/project-6.jpg)" data-fancybox="images">
-                                            <img src="<?php bloginfo('template_directory')?>/inc/images/portfolio/project-6.jpg)" alt="" />
-                                        </a>
-                                    </div>
-                                    <div class="works-info">
-                                        <div class="label-text">
-                                            <h4>Coffee Break</h4>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-lg-3 portfolio creative art">
-                                <div class="portfolio-wrapper"> 
-                                    <div class="works-img">
-                                        <a href="<?php bloginfo('template_directory')?>/inc/images/portfolio/project-7.jpg)" data-fancybox="images">
-                                            <img src="<?php bloginfo('template_directory')?>/inc/images/portfolio/project-7.jpg)" alt="" />
-                                        </a>
-                                    </div>
-                                    <div class="works-info">
-                                        <div class="label-text">
-                                            <h4>Clean Water</h4>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <?php endwhile;?>
+                            <?php endif;?>
+                            <?php if(get_field('wordpress_portfolio')): ?>
+                            <?php  while(has_sub_field('wordpress_portfolio')): ?>
                             <div class="col-md-4 col-lg-3 portfolio wordpress">
                                 <div class="portfolio-wrapper">
                                     <div class="works-img"> 
-                                        <a href="<?php bloginfo('template_directory')?>/inc/images/portfolio/project-8.jpg)" data-fancybox="images">
-                                            <img src="<?php bloginfo('template_directory')?>/inc/images/portfolio/project-8.jpg)" alt="" />
+                                        <a href="<?php the_sub_field('wordpress_image'); ?>" data-fancybox="images">
+                                            <img src="<?php the_sub_field('wordpress_image'); ?>" alt="" />
                                         </a>
                                     </div>
                                     <div class="works-info">
                                         <div class="label-text">
-                                            <h4>Total Refreshment</h4>
+                                        <h4><?php the_sub_field('wordpress_title');?></h4>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <?php endwhile;?>
+                            <?php endif;?>
+                           
 
                         </div>
                     </div>
