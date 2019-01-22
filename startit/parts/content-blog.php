@@ -1,38 +1,52 @@
 
-<?php
-$latest_articles_title = get_field('latest_articles_title');
-$latest_articles_description = get_field('latest_articles_description');
-?>
 <section id="blog" class="blog">
                 <div class="container">
                     <div class="section-title">
-                        <h2><?= $latest_articles_title; ?></h2>
-                        <p><?= $latest_articles_description;?></p>
+                    <h2><?= get_cat_name( 10 ); ?></h2>
+                    <p><?= category_description( 10 )?></p>
                     </div>
-                    <?php if( get_field('content_articles') ):  ?>
                     <div class="row">
                     <?php
+	// параметры по умолчанию
+	$articles = array(
+	  'numberposts' => 0,
+	  'orderby'     => 'date',
+	  'order'       => 'ASC',
+	  'include'     => array(),
+	  'exclude'     => array(),
+	  'meta_key'    => '',
+	  'meta_value'  =>'',
+	  'post_type'   => 'article',
+	  'suppress_filters' => true, // подавление работы фильтров изменения SQL запроса
+	);
 
-                    while(has_sub_field('content_articles') ):
-                    ?>
+	$posts = get_posts( $articles );
+
+	foreach($posts as $post) : 
+        setup_postdata($post);
+        $featured_img = wp_get_attachment_image_src( $post->ID );
+
+	?>
                         <div class="col-md-6 col-lg-4">
                             <div class="blog_post">
                             
                                 <div class="post_img">
-                                    <a href="<?= the_sub_field('url_image_articles'); ?>"><img src="<?= the_sub_field('image'); ?>" alt="img"></a>
-
+                                <a href="<?= the_permalink( );?>"><?= the_post_thumbnail( array (  360, 272 ) ); ?></a>
                                 </div>
                                 <div class="post_content">
                                     <div class="post_header">
-                                        <h2 class="post_title"><a href="<?= the_sub_field('title_articles_url');?>"><?= the_sub_field('articles_title_text'); ?></a></h2>
-                                        <div class="read_more"><a href="<?= the_sub_field('go_articles_link');?>"><?= the_sub_field('go_articles_text'); ?></a></div>
+                                        <h2 class="post_title"><a href="<?= the_permalink( ); ?>"><?= the_title( ); ?></a></h2>
+                                        <div class="read_more"><?= the_content(); ?></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <?php endwhile;?>
+                        <?php
+    
+endforeach;
+wp_reset_postdata();
+        ?>
 
                     </div>
-                    <?php endif; ?>
                 </div>
             </section>

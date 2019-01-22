@@ -1,47 +1,43 @@
 
-
-<?php
-$about_company_title = get_field('about_company_title');
-$about_company_description = get_field('about_company_description');
-?>
-<section id="about" class="about">
+  <section id="about" class="about">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-6 col-md-6">
                             <div class="section-title">
-                                <h2><?= $about_company_title; ?></h2>
-                                <p><?= $about_company_description; ?></p>
+                            <h2><?= get_cat_name( 8 ); ?></h2>
+                            <p><?= category_description( 8 )?></p>
                             </div>
-                            <div class="about_content_box box-left">
+                            <?php
+                            $args = array(
+                            'p'         => 331, // ID of a page, post, or custom type
+                            'post_type' => 'about'
+                            );
+                            ?>
 
-                                <div class="about_txt_box">
-                                    <p><?= get_field('left_about_text'); ?></p>
-                                </div>
-                                <div class="about_img_box">
-                                    <img src="<?= get_field('left_about_image'); ?>" alt="img">
-                                </div>
-                            </div>
+                            <?php $my_posts = new WP_Query($args); ?>
+                            <?php while  ($my_posts->have_posts() ) : $my_posts->the_post(); ?>
+                            <?=the_content();?>
+                            <?php endwhile; ?>
+                            <?php wp_reset_postdata();?>
                         </div>
                         <div class="col-lg-6 col-md-6">
                             <div class="about_content_box box-right">
-                                <div class="row">
-                                    <div class="col-lg-6 col-md-6">
-                                        <div class="about_img_box">
-                                            <img src="<?= get_field('right_about_image1'); ?>" alt="img">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6">
-                                        <div class="about_img_box">
-                                            <img src="<?= get_field('right_about_image2'); ?>" alt="img">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="about_txt_box">
-                                    <p><?= get_field('right_about_text'); ?> </p>
-                                    <p><?= get_field('right_about_text2'); ?></p>
-                                </div>
+                            <?php
+                            $args = array(
+                            'p'         => 340, // ID of a page, post, or custom type
+                            'post_type' => 'about'
+                            );
+                            ?>
+
+                            <?php $my_posts = new WP_Query($args); ?>
+                            <?php while  ($my_posts->have_posts() ) : $my_posts->the_post(); ?>
+                            <?=the_content();?>
+                            <?php endwhile; ?>
+                            <?php wp_reset_postdata();?>
+                                
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
+

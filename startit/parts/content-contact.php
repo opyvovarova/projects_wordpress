@@ -51,12 +51,17 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6 col-lg-6">
+                                                <?php if( get_field('social_icons') ):?>
                                                     <ul class="top-social list-inline">
+                                                <?php while( has_sub_field('social_icons') ): ?>
+                                                the_sub_field
                                                         <li><a href="index.html#"><i class="fa fa-facebook"></i></a></li>
                                                         <li><a href="index.html#"><i class="fa fa-google-plus"></i></a></li>
                                                         <li><a href="index.html#"><i class="fa fa-twitter"></i></a></li>
                                                         <li><a href="index.html#"><i class="fa fa-skype"></i></a></li>
+                                            <?php endwhile;  ?>  
                                                     </ul>
+                                    <?php endif; ?>
                                                 </div>
                                             </div>
                                         </div>

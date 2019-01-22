@@ -1,13 +1,14 @@
 <?php
-$our_portfolio_title = get_field('our_portfolio_title');
-$our_portfolio_description = get_field('our_portfolio_description');
+/*
+Template Name: Portfolio
+*/
 ?>
 
 <section id="works" class="works">
                 <div class="container">
                     <div class="section-title">
-                        <h2><?= $our_portfolio_title; ?></h2>
-                        <p><?= $our_portfolio_description; ?></p>
+                    <h2><?= get_cat_name( 9 ); ?></h2>
+                    <p><?= category_description( 9 )?></p>
                     </div>
 
                     <ul id="filters" class="clearfix text-center">
@@ -17,87 +18,59 @@ $our_portfolio_description = get_field('our_portfolio_description');
                         <li><span class="filter" data-filter=".creative">Creative</span></li>
                         <li><span class="filter" data-filter=".wordpress">WordPress</span></li>
                     </ul>
-
                     <div id="portfoliolist">
-                        <div class="row">
-                        <?php if(get_field('web_portfolio')): ?>
-                        <?php  while(has_sub_field('web_portfolio')): ?>
+                    <div class="row">
+                    <?php
+                        $portfolios = array(
+                            'numberposts' => 0,
+                            'orderby'     => 'date',
+                            'order'       => 'ASC',
+                            'include'     => array(),
+                            'exclude'     => array(),
+                            'meta_key'    => '',
+                            'meta_value'  =>'',
+                            'post_type'   => 'portfolio',
+                            'suppress_filters' => true, // подавление работы фильтров изменения SQL запроса
+                            );
 
-                            <div class="col-md-4 col-lg-3 portfolio web">
+                            $posts = get_posts( $portfolios );
 
-                                <div class="portfolio-wrapper"> 
-                                    <div class="works-img">
-
-                                        <a href="<?php the_sub_field('web_image'); ?>" data-fancybox="images">
-                                            <img src="<?php the_sub_field('web_image'); ?>" alt="" />
-                                        </a>
-                                    </div>
-                                    <div class="works-info">
-                                        <div class="label-text">
-                                        <h4><?php the_sub_field('title_image');?></h4>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <?php endwhile;?>
-                            <?php endif;?>
-                            <?php if(get_field('art_portfolio')): ?>
-                            <?php  while(has_sub_field('art_portfolio')): ?>
-                            <div class="col-md-4 col-lg-3 portfolio art">
-                                <div class="portfolio-wrapper">
-                                    <div class="works-img"> 
-                                        <a href="<?php the_sub_field('art_image'); ?>" data-fancybox="images">
-                                            <img src="<?php the_sub_field('art_image'); ?>" alt="" />
-                                        </a>
-                                    </div>
-                                    <div class="works-info">
-                                        <div class="label-text">
-                                            <h4><?php the_sub_field('art_title');?></h4>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <?php endwhile;?>
-                            <?php endif;?>
-                            <?php if(get_field('creative_portfolio')): ?>
-                            <?php  while(has_sub_field('creative_portfolio')): ?>
-                            <div class="col-md-4 col-lg-3 portfolio creative ">
-                                <div class="portfolio-wrapper">
-                                    <div class="works-img"> 
-                                        <a href="<?php the_sub_field('creative_image'); ?>" data-fancybox="images">
-                                            <img src="<?php the_sub_field('creative_image'); ?>" alt="" />
-                                        </a>
-                                    </div>
-                                    <div class="works-info">
-                                        <div class="label-text">
-                                        <h4><?php the_sub_field('creative_title');?></h4>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <?php endwhile;?>
-                            <?php endif;?>
-                            <?php if(get_field('wordpress_portfolio')): ?>
-                            <?php  while(has_sub_field('wordpress_portfolio')): ?>
-                            <div class="col-md-4 col-lg-3 portfolio wordpress">
-                                <div class="portfolio-wrapper">
-                                    <div class="works-img"> 
-                                        <a href="<?php the_sub_field('wordpress_image'); ?>" data-fancybox="images">
-                                            <img src="<?php the_sub_field('wordpress_image'); ?>" alt="" />
-                                        </a>
-                                    </div>
-                                    <div class="works-info">
-                                        <div class="label-text">
-                                        <h4><?php the_sub_field('wordpress_title');?></h4>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <?php endwhile;?>
-                            <?php endif;?>
+                            foreach($posts as $post) : 
+                                setup_postdata($post);
+                                
+                            ?>
+                            <div class="col-md-4 col-lg-3 portfolio<?php
+                         
+                         $tags = wp_get_post_tags($post->ID);
+                         if ($tags) {
+                             foreach($tags as $tag) {
+                                 echo " " . $tag->name;
+                             }
+                         }
                            
+                            ?>" style="display: inline-block;" data-bound>
+                                <div class="portfoliso-wrapper"> 
+                                    <div class="works-img">
+                                        <a href="images/portfolio/project-1.jpg" data-fancybox="images">
+                                            <?=the_post_thumbnail( array (  360, 272 ) );?>
+                                        </a>
+                                    </div>
+                                    <div class="works-info">
+                                        <?= the_content();?>
+                                    </div>
+                                </div>
+                            </div>
+                            <?php
+    
+                        endforeach;
+                        wp_reset_postdata();
+                                ?>
+                            
+                        
 
                         </div>
-                    </div>
+                   
+                   </div>
+                   
                 </div>
             </section>
