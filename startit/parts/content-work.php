@@ -39,14 +39,13 @@ Template Name: Portfolio
                                 setup_postdata($post);
                                 
                             ?>
-                            <div class="col-md-4 col-lg-3 portfolio<?php
-                         
-                         $tags = wp_get_post_tags($post->ID);
-                         if ($tags) {
-                             foreach($tags as $tag) {
-                                 echo " " . $tag->name;
-                             }
-                         }
+                            <div class="col-md-4 col-lg-3 portfolio <?php
+                         $terms = get_the_terms( $post->ID, 'portfolio_tag' );
+                                if ($terms) {
+                                    foreach($terms as $term) {
+                                    echo " " . $term->name . " ";
+                                    } 
+                                }
                            
                             ?>" style="display: inline-block;" data-bound>
                                 <div class="portfoliso-wrapper"> 
