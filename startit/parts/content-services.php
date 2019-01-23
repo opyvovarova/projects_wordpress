@@ -24,7 +24,7 @@
 	);
 
 	$posts = get_posts( $args );
-
+$count = 0;
 	foreach($posts as $post) : 
         setup_postdata($post);
 	?>
@@ -32,8 +32,7 @@
             
                 <div class="servicebox">
                     <div class="srv_desc">
-
-                        <h5 class="count"></h5>
+                        <h5 class="count"><?= 0 . $count += 1; ?></h5>
                         <h4><a href="<?= the_permalink(); ?>"><?= the_title(); ?> </a></h4> 
                         <p><?= the_content(); ?></p>
                     </div>

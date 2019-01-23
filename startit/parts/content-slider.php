@@ -9,7 +9,7 @@
 
 ?>
 
-<section id="slider" class="slider_1" style="background-image:url(<?= get_field('slider_image'); ?>) ">
+<section id="slider" class="slider_1" style="background-image:url(<?php echo get_stylesheet_directory_uri(); ?>/inc/images/slider/slider-bg1.jpg) ">
             <div class="slider">
                 <div class="container">
                     <div class="slide-content">

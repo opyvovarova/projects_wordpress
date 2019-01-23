@@ -50,7 +50,7 @@ Template Name: Portfolio
                             ?>" style="display: inline-block;" data-bound>
                                 <div class="portfoliso-wrapper"> 
                                     <div class="works-img">
-                                        <a href="images/portfolio/project-1.jpg" data-fancybox="images">
+                                        <a href="<?= the_permalink(  ) ?>" data-fancybox="images">
                                             <?=the_post_thumbnail( array (  360, 272 ) );?>
                                         </a>
                                     </div>
